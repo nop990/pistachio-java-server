@@ -87,3 +87,8 @@ list:
     2. Go to each of the teams' Home > Settings pages and note the Abbreviation and the INTERNAL TEAM ID. If you are
        unsure which it is, go to the San Diego Padres and find the row that shows their ID as 23
     3. Add this row to club_lookup.csv. The first column is the numeric ID and the second is the Abbreviation.
+
+
+## Contribution
+
+To contribute, you'll want to pull down this repo, squirrel_plays' jupiter notebook repo, and the Angular repo. To run locally, the notebook should be renamed to pistachio.ipynb and placed into the java project's root directory. You then need to create a python venv in the root directory called pythonVenv and install jupyter, notebook, numpy, pandas, and toml. Finally, build the Angular project and place the contents of the dist/pistachio-ui/browser folder into src/main/resources/static in the Java project.
