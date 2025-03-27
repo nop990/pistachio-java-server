@@ -1,2 +1,2 @@
-java -jar pistachio-0.0.1-SNAPSHOT.jar
+java -jar pistachio-1.0.0.jar
 pause
