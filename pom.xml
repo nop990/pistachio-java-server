@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.nop990</groupId>
 	<artifactId>pistachio</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>pistachio</name>
 	<description>Conversion of squirrel_plays&apos; Pistachio program to Java</description>
 	<url/>
