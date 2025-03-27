@@ -17,7 +17,7 @@
         <fileSet>
             <directory>src/main/resources</directory>
             <includes>
-                <include>start.bat</include>
+                <include>run.bat</include>
                 <include>README.md</include>
             </includes>
             <outputDirectory>/</outputDirectory>
