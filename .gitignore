@@ -1,4 +1,6 @@
 pistachioVenv
+src/main/resources/static
+reports/*.csv
 
 HELP.md
 target/
