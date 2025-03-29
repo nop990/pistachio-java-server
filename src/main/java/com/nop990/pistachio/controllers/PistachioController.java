@@ -1,5 +1,7 @@
 package com.nop990.pistachio.controllers;
 
+import com.nop990.pistachio.models.BatterReportDTO;
+import com.nop990.pistachio.models.PitcherReportDTO;
 import com.nop990.pistachio.services.PistachioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,11 +11,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-import static com.nop990.pistachio.utils.Utility.readFile;
+import static com.nop990.pistachio.utils.Utility.readBatterCsv;
+import static com.nop990.pistachio.utils.Utility.readPitcherCsv;
 
 @Controller
 @CrossOrigin(origins = "*")
@@ -31,32 +34,26 @@ public class PistachioController {
 
     // Get Batter Report
     @GetMapping("/getBatterReport")
-    public ResponseEntity<String> getBatterReport() {
+    public ResponseEntity<ArrayList<BatterReportDTO>> getBatterReport() {
         try {
-            String content = readFile("reports/batter_sWAR.csv");
-            return ResponseEntity.ok(content);
+            ArrayList<BatterReportDTO> response = readBatterCsv();
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             e.printStackTrace();
-            if (e instanceof FileNotFoundException) {
-                return new ResponseEntity<>("Report not found", HttpStatus.NOT_FOUND);
-            }
             System.out.println(e.getMessage());
-            return new ResponseEntity<>("Error locating file", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     // Get Pitcher Report
     @GetMapping("/getPitcherReport")
-    public ResponseEntity<String> getPitcherReport() {
+    public ResponseEntity<ArrayList<PitcherReportDTO>> getPitcherReport() {
         try {
-            String content = readFile("reports/pitcher_sWAR.csv");
-            return ResponseEntity.ok(content);
+            ArrayList<PitcherReportDTO> response = readPitcherCsv();
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             e.printStackTrace();
-            if (e instanceof FileNotFoundException) {
-                return new ResponseEntity<>("Report not found", HttpStatus.NOT_FOUND);
-            }
-            return new ResponseEntity<>("Error locating file", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
