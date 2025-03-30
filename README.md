@@ -22,7 +22,7 @@ OOTP 26
 - [ ] players_fielding.csv
 - [ ] players_pitching.csv
 - [ ] players_roster_status.csv
-- [ ] players_scounted_rating.csv
+- [ ] players_scouted_rating.csv
 - [ ] teams.csv (Optional)
 
 3. Click 'Options'
