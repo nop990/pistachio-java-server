@@ -15,14 +15,14 @@ OOTP 26
 2. In OOTP, export your database files (you can only on-demand offline without challenge mode). You will need:
 
 - [ ] coaches.csv
-- [ ] players.csv
+- [ ] players_basic.csv
 - [ ] players_batting.csv
 - [ ] players_career_batting_stats.csv
 - [ ] players_contract.csv
 - [ ] players_fielding.csv
 - [ ] players_pitching.csv
 - [ ] players_roster_status.csv
-- [ ] players_scouted_rating.csv
+- [ ] players_scouted_rating.csv (by toggling Additional Complete Scouted Ratings)
 - [ ] teams.csv (Optional)
 
 3. Click 'Options'
