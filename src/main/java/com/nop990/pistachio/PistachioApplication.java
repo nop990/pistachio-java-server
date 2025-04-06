@@ -3,12 +3,14 @@ package com.nop990.pistachio;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.awt.*;
 import java.io.IOException;
-import java.sql.SQLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 @SpringBootApplication
-public class PistachioApplication  {
-    public static void main(String[] args) throws SQLException, IOException, InterruptedException {
+public class PistachioApplication {
+    public static void main(String[] args) throws IOException, InterruptedException, URISyntaxException {
         // Start Spring Boot in a separate thread
         SpringApplication.run(PistachioApplication.class, args);
 
@@ -30,8 +32,23 @@ public class PistachioApplication  {
         openBrowser("http://localhost:8080");
     }
 
-    private static void openBrowser(String url) {
+    public static void openBrowser(String url) throws IOException, URISyntaxException {
+        if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+            Desktop.getDesktop().browse(new URI(url));
+        } else {
+            String os = System.getProperty("os.name").toLowerCase();
+            Runtime rt = Runtime.getRuntime();
 
+            if (os.contains("win")) {
+                rt.exec("rundll32 url.dll,FileProtocolHandler " + url);
+            } else if (os.contains("mac")) {
+                rt.exec("open " + url);
+            } else if (os.contains("nix") || os.contains("nux") || os.contains("bsd")) {
+                rt.exec("xdg-open " + url);
+            } else {
+                throw new UnsupportedOperationException("Unsupported OS: " + os);
+            }
+        }
     }
 
     public static void launchVenvPB() {

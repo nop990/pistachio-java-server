@@ -1,8 +1,10 @@
 package com.nop990.pistachio.controllers;
 
+import com.nop990.pistachio.PistachioApplication;
 import com.nop990.pistachio.models.BatterReportDTO;
 import com.nop990.pistachio.models.PitcherReportDTO;
 import com.nop990.pistachio.services.PistachioService;
+import com.opencsv.exceptions.CsvException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +28,7 @@ public class PistachioController {
 
     // Run "Notebook"
     @PostMapping("/runNotebook")
-    public ResponseEntity<String> runNotebook() throws IOException, SQLException {
+    public ResponseEntity<String> runNotebook() throws IOException {
         String result = pistachioService.mainProcess();
 
         return ResponseEntity.ok(result);

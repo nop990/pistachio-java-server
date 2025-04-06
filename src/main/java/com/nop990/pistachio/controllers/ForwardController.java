@@ -5,8 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ForwardController {
-    @RequestMapping(value = {"/{path:[^\\.]*}"})
-    public String forward() {
+    @RequestMapping("/")
+    public String forwardToStatic() {
+        // This will forward to index.html in src/main/resources/static
         return "forward:/index.html";
     }
 }
